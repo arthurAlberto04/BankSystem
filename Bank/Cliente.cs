@@ -22,7 +22,6 @@ namespace Bank
             Nascimento = nascimento.Date;
         }
 
-
         private bool CpfEhValido(string cpf)
         {
             int[] multiplicadores = {10, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -51,7 +50,5 @@ namespace Bank
             result = result % 11;
             return result < 2 ? 0 : 11 - result;
         }
-
-
     }
 }
