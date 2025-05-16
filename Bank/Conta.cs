@@ -11,13 +11,14 @@ namespace Bank
         public int Numero { get; set; }
         public Cliente Titular { get; private set; }
         private float Saldo { get; set; }
-        private string Senha { get; set; }
+        public string Senha { get; set; }
         private List<Transacao> Transacoes = new List<Transacao>();
         public Conta(Cliente titular, string senha)
         {
             Numero = new Random().Next(1000000, 10000000);
             Titular = titular;
-            Senha = senha;
+            string salt = CriarPalavra();
+            Senha = CriptografarSenha(senha + salt);
         }
         public Conta(Cliente titular, string senha, float deposito)
         {
@@ -26,7 +27,22 @@ namespace Bank
             Senha = senha;
             Saldo = deposito;
         }
+        private string CriarPalavra()
+        {
+            int stringlen = new Random().Next(0, 10);
+            int randValue;
+            string str = "";
+            char letter;
+            for (int i = 0; i < stringlen; i++)
+            {
+                randValue = new Random().Next(97, 113);
 
+                letter = Convert.ToChar(randValue + 65);
+
+                str = str + letter;
+            }
+            return str;
+        }
         public float GetSaldo()
         {
             return Saldo;
@@ -57,7 +73,7 @@ namespace Bank
                 Console.WriteLine($"Tipo: {transacao.Tipo} R${transacao.Valor} - Data {transacao.Data.Day}/{transacao.Data.Month}/{transacao.Data.Year} - Hora {transacao.Data.Hour}:{transacao.Data.Minute}min ");
             }
         }
-        private string CriptografarSenha(string senha)
+        public string CriptografarSenha(string senha)
         {
             
             senha = Reverter(senha);

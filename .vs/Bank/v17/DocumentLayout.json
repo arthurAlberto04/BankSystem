@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|solutionrelative:bank\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|c:\\users\\linda\\desktop\\bank\\bank\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|solutionrelative:bank\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|c:\\users\\linda\\desktop\\bank\\bank\\conta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|solutionrelative:bank\\conta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|c:\\users\\linda\\desktop\\bank\\bank\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77BB4A84-DA82-41FC-8D78-A4B1013CF34A}|Bank\\Bank.csproj|solutionrelative:bank\\transacao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +30,7 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Transacao.cs",
               "DocumentMoniker": "C:\\Users\\linda\\Desktop\\Bank\\Bank\\Transacao.cs",
               "RelativeDocumentMoniker": "Bank\\Transacao.cs",
@@ -38,18 +38,17 @@
               "RelativeToolTip": "Bank\\Transacao.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T01:35:17.347Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T01:35:17.347Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Conta.cs",
               "DocumentMoniker": "C:\\Users\\linda\\Desktop\\Bank\\Bank\\Conta.cs",
               "RelativeDocumentMoniker": "Bank\\Conta.cs",
               "ToolTip": "C:\\Users\\linda\\Desktop\\Bank\\Bank\\Conta.cs",
               "RelativeToolTip": "Bank\\Conta.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHIAAAAAAAAA",
+              "ViewState": "AQIAABAAAAAAAAAAAAAcwB8AAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T01:35:01.331Z",
               "EditorCaption": ""
@@ -62,7 +61,7 @@
               "RelativeDocumentMoniker": "Bank\\Cliente.cs",
               "ToolTip": "C:\\Users\\linda\\Desktop\\Bank\\Bank\\Cliente.cs",
               "RelativeToolTip": "Bank\\Cliente.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T01:34:46.004Z",
               "EditorCaption": ""
@@ -75,7 +74,7 @@
               "RelativeDocumentMoniker": "Bank\\Program.cs",
               "ToolTip": "C:\\Users\\linda\\Desktop\\Bank\\Bank\\Program.cs",
               "RelativeToolTip": "Bank\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-16T01:29:51.477Z",
               "EditorCaption": ""
