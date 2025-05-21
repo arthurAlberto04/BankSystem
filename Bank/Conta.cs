@@ -24,7 +24,8 @@ namespace Bank
         {
             Numero = new Random().Next(1000000, 10000000);
             Titular = titular;
-            Senha = senha;
+            string salt = CriarPalavra();
+            Senha = CriptografarSenha(senha + salt);
             Saldo = deposito;
         }
         private string CriarPalavra()
@@ -35,9 +36,9 @@ namespace Bank
             char letter;
             for (int i = 0; i < stringlen; i++)
             {
-                randValue = new Random().Next(97, 113);
+                randValue = new Random().Next(97, 123);
 
-                letter = Convert.ToChar(randValue + 65);
+                letter = Convert.ToChar(randValue);
 
                 str = str + letter;
             }
@@ -73,7 +74,9 @@ namespace Bank
                 Console.WriteLine($"Tipo: {transacao.Tipo} R${transacao.Valor} - Data {transacao.Data.Day}/{transacao.Data.Month}/{transacao.Data.Year} - Hora {transacao.Data.Hour}:{transacao.Data.Minute}min ");
             }
         }
-        public string CriptografarSenha(string senha)
+
+
+        private string CriptografarSenha(string senha)
         {
             
             senha = Reverter(senha);
