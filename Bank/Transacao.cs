@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
-    internal class Transacao
+    public class Transacao
     {
         [Key]
         public string Id {  get; set; }

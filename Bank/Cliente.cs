@@ -9,14 +9,13 @@ using System.Threading.Tasks;
 
 namespace Bank
 {
-    internal class Cliente
+    public class Cliente
     {
         [Key]
         public string CPF { get; set; }
         public string Nome { get; set; }
         public DateTime Nascimento { get; set; }
-        public int Idade { get { return Idade; } set { DateTime.Now.Date.Subtract(Nascimento.Date); } }
-
+        public int Idade { get; set; }
         protected Cliente() { }
         public Cliente(string cpf, string nome, DateTime nascimento)
         {
@@ -24,8 +23,8 @@ namespace Bank
             CPF = cpf;
             Nome = nome;
             Nascimento = nascimento.Date;
+            Idade = DateTime.Today.Date.Subtract(Nascimento).Days / 365;
         }
-
         private bool CpfEhValido(string cpf)
         {
             int[] multiplicadores = {10, 9, 8, 7, 6, 5, 4, 3, 2};
@@ -41,7 +40,6 @@ namespace Bank
 
             return cpf[9] - '0' == verificador1 && cpf[10] - '0' == verficador2;
         }
-
         private int CalculoVerificadores(string parcial, int[] multiplicadores)
         {
             int result = 0;

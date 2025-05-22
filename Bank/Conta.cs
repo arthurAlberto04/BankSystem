@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 
 namespace Bank
 {
-    internal class Conta
+    public class Conta
     {
         [Key]
         public int Numero { get; set; }
@@ -20,14 +20,12 @@ namespace Bank
         protected Conta() { } 
         public Conta(Cliente titular, string senha)
         {
-            Numero = new Random().Next(1000000, 10000000);
             Titular = titular;
             Salt = CriarPalavra();
             Senha = Hashing(senha + Salt);
         }
         public Conta(Cliente titular, string senha, float deposito)
         {
-            Numero = new Random().Next(1000000, 10000000);
             Titular = titular;
             Salt = CriarPalavra();
             Senha = Hashing(senha + Salt);
@@ -79,7 +77,7 @@ namespace Bank
                 Console.WriteLine($"Tipo: {transacao.Tipo} R${transacao.Valor} - Data {transacao.Data.Day}/{transacao.Data.Month}/{transacao.Data.Year} - Hora {transacao.Data.Hour}:{transacao.Data.Minute}min ");
             }
         }
-        private string Hashing(string source)
+        public static string Hashing(string source)
         {
             using (SHA256 sha256Hash = SHA256.Create())
             {
@@ -99,7 +97,7 @@ namespace Bank
             }
             return sBuilder.ToString();
         }
-        private static bool VerifyHash(HashAlgorithm hashAlgorithm, string senha, string hash)
+        public static bool VerifyHash(HashAlgorithm hashAlgorithm, string senha, string hash)
         {
             var hashOfInput = GetHash(hashAlgorithm, senha);
 

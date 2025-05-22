@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,8 +23,16 @@ namespace Bank.Db
 
         public void Add(T obj)
         {
-            context.Set<T>().Add(obj);
-            context.SaveChanges();
+            try
+            {
+                context.Set<T>().Add(obj);
+                context.SaveChanges();
+            }
+            catch (DbUpdateException ex)
+            {
+                Console.WriteLine(ex.InnerException?.Message);
+            }
+            //context.SaveChanges();
         }
         public void Remove(T obj)
         {
