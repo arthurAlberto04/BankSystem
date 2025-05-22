@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -9,11 +11,13 @@ namespace Bank
 {
     internal class Cliente
     {
+        [Key]
         public string CPF { get; set; }
         public string Nome { get; set; }
         public DateTime Nascimento { get; set; }
         public int Idade { get { return Idade; } set { DateTime.Now.Date.Subtract(Nascimento.Date); } }
 
+        protected Cliente() { }
         public Cliente(string cpf, string nome, DateTime nascimento)
         {
             if (!CpfEhValido(cpf)) throw new Exception("CPF Invalido");

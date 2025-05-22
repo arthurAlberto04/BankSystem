@@ -38,7 +38,7 @@ void CriarConta()
     var cliente = NovoCliente();
     Console.Write("Digite Sua Senha: ");
     senha = Console.ReadLine();
-    Console.WriteLine("\nDeseja Fazer Um Deposito Inicial? s/n");
+    Console.Write("\nDeseja Fazer Um Deposito Inicial? (s/n): ");
     char resp = char.Parse(Console.ReadLine());
     if (resp == 's')
     {
@@ -46,27 +46,56 @@ void CriarConta()
         float dep = float.Parse(Console.ReadLine());
         var c = new Conta(cliente, senha, dep);
         Console.WriteLine($"Numero da sua conta: {c.Numero}");
-        return;
+        Console.Write("\nPressione Enter para voltar ao menus");
+        Console.ReadKey();
+        Console.Clear();
+        Menu();
     }
     var conta = new Conta(cliente, senha);
     Console.WriteLine($"Numero da sua conta: {conta.Numero}");
-    return;
+    Console.Write("\nPressione Enter para voltar ao menus");
+    Console.ReadKey();
+    Console.Clear();
+    Menu();
 }
 
 Cliente NovoCliente()
 {
-    string cpf;
-    string nome;
-    DateTime dataNascimento;
+    Cliente c = null;
+    bool sucesso = false;
+
+    while (!sucesso)
+    {
+        Console.Clear();
+
+        Console.Write("Digite seu cpf: ");
+        string cpf = Console.ReadLine();
+
+        Console.Write("Digite seu nome: ");
+        string nome = Console.ReadLine();
+
+        Console.Write("Digite sua data de nascimento: ");
+        string d = Console.ReadLine();
+
+        try
+        {
+            DateTime dataNascimento = DateTime.Parse(d, CultureInfo.CreateSpecificCulture("pt-BR"));
+            c = new Cliente(cpf, nome, dataNascimento);
+            sucesso = true;
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("\nData inválida.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"\n{ex.Message}. Tente novamente.\n");
+            Console.ReadKey();
+        }
+    }
     Console.Clear();
-    Console.Write("Digite seu cpf: ");
-    cpf = Console.ReadLine();
-    Console.Write("Digite seu nome: ");
-    nome = Console.ReadLine();
-    Console.Write("Digite sua data de nascimento: ");
-    string d = Console.ReadLine();
-    dataNascimento = DateTime.Parse(d, CultureInfo.CreateSpecificCulture("pt-BR"));
-    Cliente c = new Cliente(cpf, nome, dataNascimento);
     return c;
+
 }
 
+Menu();
