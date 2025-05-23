@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Db
 {
-    internal class BankDAL<T> where T : class
+    public class BankDAL<T> where T : class
     {
         private readonly BankContext context;
 
@@ -23,16 +23,8 @@ namespace Bank.Db
 
         public void Add(T obj)
         {
-            try
-            {
-                context.Set<T>().Add(obj);
-                context.SaveChanges();
-            }
-            catch (DbUpdateException ex)
-            {
-                Console.WriteLine(ex.InnerException?.Message);
-            }
-            //context.SaveChanges();
+              context.Set<T>().Add(obj);
+              context.SaveChanges();
         }
         public void Remove(T obj)
         {

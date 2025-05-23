@@ -10,7 +10,7 @@ namespace Bank
     public class Transacao
     {
         [Key]
-        public string Id {  get; set; }
+        public int Id {  get; set; }
         public string Tipo { get; set; }
         public float Valor { get; set; }
         public DateTime Data { get; set; }

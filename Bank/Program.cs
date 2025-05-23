@@ -5,6 +5,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 internal class Program
 {
+
     private static void Main(string[] args)
     {
         BankContext ctx = new BankContext();
@@ -39,12 +40,11 @@ internal class Program
                 Console.Write("Digite Sua Senha: ");
                 senha = Console.ReadLine();
 
-                BankDAL<Conta> dal = new BankDAL<Conta>(ctx);
-                var existeConta = dal.Recoverby(c => c.Numero == numero);
+                var existeConta = account.Recoverby(c => c.Numero == numero);
                 if (existeConta != null && existeConta.Senha.Equals(Conta.Hashing(senha + existeConta.Salt), StringComparison.Ordinal))
                 {
                     success = true;
-                    MenuConta();
+                    MenuConta(existeConta);
                 }
                 else
                 {
@@ -138,13 +138,83 @@ internal class Program
             }
             return c;
         }
-        Menu();
-    }
+        void VerSaldo(Conta conta)
+        {
+            Console.Clear();
+            Console.WriteLine($"Saldo R${conta.Saldo}");
+            Console.Write("Pressione Enter para voltar");
+            Console.ReadKey();
+            MenuConta(conta);
+        }
+        void MenuSacar(Conta conta)
+        {            
+            Console.Clear();
+            try
+            {
+                Console.WriteLine("Saque");
+                Console.Write("\nInforme o valor que deseja sacar: ");
+                float valor = float.Parse(Console.ReadLine());
 
-    private static void MenuConta()
-    {
-        Console.WriteLine("Sucesso");
-        Console.ReadKey();
-        //Menu a ser criado com features de deposito, saque e extrato
+                conta.Sacar(valor, account, conta);
+                Console.WriteLine("Saque Efetuado com Sucesso");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"{ex}. Tente Novamente, Saldo Disponivel R${conta.Saldo} para saque");
+            }
+            Console.Write("\nPressione Enter para voltar");
+            Console.ReadKey();
+            MenuConta(conta);
+        }
+        void Depositar(Conta conta)
+        {
+            Console.Clear();
+            Console.WriteLine("Deposito");
+            Console.Write("\nInforme o valor que deseja depositar: ");
+            float deposito = float.Parse(Console.ReadLine());
+            conta.Depositar(deposito, account, conta);
+
+            Console.WriteLine("Deposito Efetuado com sucesso!");
+            Console.WriteLine("\nPressione enter para voltar");
+            Console.ReadKey();
+            MenuConta(conta);
+        }
+        void ExibirExtrato(Conta conta)
+        {
+            Console.Clear();
+            conta.ExibirTransacoes();
+            Console.Write("\nPressione Enter Para voltar");
+            Console.ReadKey();
+            MenuConta(conta);
+        }
+        void MenuConta(Conta conta)
+        {
+            Console.Clear();
+            Console.WriteLine("Menu Conta");
+            Console.WriteLine("\n1 - Saldo");
+            Console.WriteLine("2 - Sacar");
+            Console.WriteLine("3 - Depositar");
+            Console.WriteLine("4 - Extrato");
+            Console.WriteLine("5 - Sair");
+            Console.Write("\nDigite a opcao desejada: ");
+            int option = int.Parse(Console.ReadLine());
+
+            switch (option)
+            {
+                case 1:
+                    VerSaldo(conta);
+                    break;
+                case 2:
+                    MenuSacar(conta);
+                    break;
+                case 3:
+                    Depositar(conta);
+                    break;
+                case 4:
+                    ExibirExtrato(conta);
+                    break;
+            }
+        }
+        Menu();
     } 
 }

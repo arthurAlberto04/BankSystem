@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using Bank.Db;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Bank
 {
@@ -51,21 +53,23 @@ namespace Bank
         {
             return Saldo;
         }
-        public void Sacar(int v)
+        public void Sacar(float v, BankDAL<Conta> account, Conta conta)
         {
             if (Saldo < v) throw new Exception("Saldo insuficiete");
-
             Saldo -= v;
-
-            Transacoes.Add(new Transacao("Sacar", v, DateTime.Now));
+            Transacoes.Add(new Transacao("Saque", v, DateTime.Now));
+            account.Update(conta);
+            
         }
-        public void Depositar(int v)
+        public void Depositar(float v, BankDAL<Conta> account, Conta conta)
         {
             if (v < 0) throw new Exception("O valor deve ser positivo");
             
             Saldo += v;
 
-            Transacoes.Add(new Transacao("Depositar", v, DateTime.Now));
+            Transacoes.Add(new Transacao("Deposito", v, DateTime.Now));
+            account.Update(conta);
+            
         }
         public void ExibirTransacoes()
         {
@@ -74,7 +78,7 @@ namespace Bank
             Console.WriteLine("Historico de transacoes");
             foreach (var transacao in Transacoes)
             {
-                Console.WriteLine($"Tipo: {transacao.Tipo} R${transacao.Valor} - Data {transacao.Data.Day}/{transacao.Data.Month}/{transacao.Data.Year} - Hora {transacao.Data.Hour}:{transacao.Data.Minute}min ");
+                Console.WriteLine($"\nId: {transacao.Id}, Tipo: {transacao.Tipo} R${transacao.Valor} - Data {transacao.Data.Day}/{transacao.Data.Month}/{transacao.Data.Year} - Hora {transacao.Data.Hour}:{transacao.Data.Minute}min ");
             }
         }
         public static string Hashing(string source)

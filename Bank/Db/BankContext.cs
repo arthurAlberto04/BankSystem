@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Bank.Db
 {
-    internal class BankContext : DbContext
+    public class BankContext : DbContext
     {
         private string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Bank;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
         public DbSet<Conta> Contas { get; set; }
